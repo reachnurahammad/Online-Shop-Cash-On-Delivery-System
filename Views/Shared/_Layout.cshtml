@@ -1,0 +1,308 @@
+﻿@using Microsoft.Net.Http
+@using Microsoft.AspNetCore.Http
+@using Test.Data
+@inject IHttpContextAccessor _ContextAccessor
+@{
+    string Type = _ContextAccessor.HttpContext.Session.GetType("loginuser");
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Test</title>
+
+    <environment include="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute"
+              crossorigin="anonymous"
+              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" />
+    </environment>
+    <link rel="stylesheet" href="~/css/site.css" />
+
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link href="~/css/layout.css" rel="stylesheet" />
+
+   
+</head>
+<body style="background-color: gainsboro">
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                @if (Type == "Admin")
+                {
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Test</a>
+                }
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <partial name="_LoginPartial" />
+                    <ul class="navbar-nav flex-grow-1">
+                        @if (Type == "Admin")
+                        {
+
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Role" asp-action="Index">Role Management</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Role" asp-action="AssignRole">Assign Role</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="Index">Admin</a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+
+        </nav>
+    </header>
+
+    @*Search box--------*@
+    <div class="box1" style="background-color:antiquewhite;height:120px;margin-top: -1.2%;">
+        <br />
+        <h1>Quick.Com</h1>
+        <style>
+            h1, .h1 {
+                margin-left: 2.5%;
+            }
+        </style>
+
+        @if (Type == "Admin")
+        {
+            <div class="col-md-2 ml-1 text-center" style="background-color: orangered;color: aliceblue;">
+                @if (ViewBag.count != null)
+                {
+                    <p6>Total : @ViewBag.count data found.</p6>
+                }
+            </div>
+        }
+
+        <form asp-controller="Home" asp-action="Index" method="post" style="width: 100%; margin-left: -2.6%; margin-top: -3%;">
+            <div class="input-group">
+                <input type="search" class="form-control rounded" name="usertext" placeholder="Search" aria-label="Search" aria-describedby="search-addon" style="margin-left: 20%;" />
+                <button type="submit" class="btn btn-danger">Search</button>
+            </div>
+        </form>
+    </div>
+    @*List button------*@
+    <div class="menu-ber">
+        <ul>
+
+            <li class="active1" style="margin-left: -6%;"><a href="@Url.Action("Index","Home")" class="">Home</a></li>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+
+            @*<li><a href="@Url.Action("Information","Home")" class="">Information</a></li>*@
+            <li><a href="@Url.Action("AllShops","Home")" class="">All-Products</a></li>
+            <li><a href="@Url.Action("GiftCard","Home")" class="">Gift-Card</a></li>
+            <li><a href="@Url.Action("Campaign","Home")" class="">Promotion</a></li>
+            <li><a href="@Url.Action("ContactUs","Home")" class="">Contact Us</a></li>
+
+            @*<li><a href="http://vub.edu.bd/webmail" target="_blank">FAQ</a></li>*@
+            <li><a href="@Url.Action("FAQ","Home")" class="">FAQ</a></li>
+        </ul>
+    </div>
+    <style>
+        .menu-ber {
+            background: black;
+            text-align: center;
+            width: 100%;
+            height: 54px;
+        }
+
+            .menu-ber ul {
+                display: inline-flex;
+                list-style: none;
+                color: #fff;
+                margin-top: -1%;
+                margin-left: -4%;
+            }
+
+                .menu-ber ul li {
+                    width: 150px;
+                    margin: 15px;
+                    padding: 15px;
+                }
+
+                    .menu-ber ul li a {
+                        text-decoration: none;
+                        color: #fff;
+                    }
+
+                    .active1, .menu-ber ul li:hover {
+                        background-color: red;
+                        border-radius: 3px;
+                    }
+    </style>
+
+    @*box*@
+    <div class="box" style="background-color:#f7f8fa;">
+        <partial name="_CookieConsentPartial" />
+        <main role="main" class="pb-5">
+            @RenderBody()
+        </main>
+    </div>
+    @*Search box--------*@
+
+    @*//........Footer card........//*@
+    <footer class="card6">  </footer>
+    <div class="list-group1">
+        <div class="text-info">
+            <div class="textwidget custom-html-widget">
+                <h4 class="widget-title " style="margin-left: 2.5%;">Quick Links</h4>
+
+                <ul class="list angle-double-right list-border">
+                    <a href="#"> Home</a>
+                    <br />
+                    <a href="#"> All-Products</a>
+                    <br />
+                    <a href="#">Gift Card</a>
+                    <br />
+                    <a href="http://vub.edu.bd/webmail" target="_blank">Contact Us</a>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="list-group2">
+        <div class="text-info">
+            <div class="textwidget custom-html-widget">
+                <h4 class="widget-title " style="margin-left: 3.5%;">About Us</h4>
+                <ul class="list angle-double-right list-border">
+
+                    <a href="http://vub.edu.bd/webmail" target="_blank">GP GA 23, Mohakhali </a>
+                    <br />
+                    <a href="http://vub.edu.bd/webmail" target="_blank"> Gulshan, Dhaka - 1212</a>
+                    <br />
+                    <a href="#"> Admin Email: shantonurbd@gmail.com</a>
+                    <br />
+                    <a href="#"> Admin Password: 1Shantonurbd@gmail.com</a>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="list-group4">
+        <div class="text-info">
+            <div class="textwidget custom-html-widget">
+                <h4 class="widget-title " style="margin-left: 5%;">Follow Us</h4>
+                <ul class="list angle-double-right list-border">
+                    <a href="https://accounts.google.com/signin/v2/identifier?continue=https%3A%2F%2Fmail.google.com%2Fmail%2F&service=mail&sacu=1&rip=1&flowName=GlifWebSignIn&flowEntry=ServiceLogin"><i class="far fa-envelope"></i></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                    <a href="https://www.facebook.com/shanto.shantonur.7"><i class="fab fa-facebook-square"></i> </a>
+                    <br />
+                    <a href="#">
+                        <a href=""<i class="fab fa-youtube"></i></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                        <a href="#"><i class="fas fa-phone-alt"></a></i>
+
+
+                        <br />
+
+                        <a href=""><i class="fab fa-twitter-square"></i></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                        <a href="#"> <i class="fab fa-instagram"></i></a>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="list-group3">
+        <div class="text-info">
+            <div class="textwidget custom-html-widget">
+                <h4 class="widget-title " style="margin-left: 13%;">Contact</h4>
+                <ul class="list angle-double-right list-border">
+                    <a href="#"><i class="far fa-envelope"></i> shantonurbd@gmail.com</a>
+                    <br />
+                    <a href="#"><i class="fas fa-phone-alt"></i> 01730208279</a>
+                    <br />
+                    <a href="#"><i class="fab fa-facebook-square"></i> Facebook</a>
+                    <br />
+                    <a href="http://vub.edu.bd/webmail" target="_blank"><i class="fab fa-twitter-square"></i> Twitter</a>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <br />
+    <style>
+        .card6 {
+            width: 120%;
+            height: 300px;
+            margin-left: -20%;
+            background-color: #393939;
+        }
+
+        .list-group1 {
+            margin-top: -15.2%;
+        }
+
+        ul a {
+            text-decoration: none;
+            color: lightgray;
+        }
+
+        .list-group2 {
+            margin-left: 25%;
+            margin-top: -11.5%;
+        }
+
+        .list-group4 {
+            margin-left: 56%;
+            margin-top: -11%;
+        }
+
+
+        .list-group3 {
+            margin-left: 81%;
+            margin-top: -10.5%;
+        }
+    </style>
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            <p4>&copy; 2021  Nur Ahammad - All Rights Reserved <a asp-area="" asp-controller="Home" asp-action=""></a></p4>
+            <a href="https://policies.google.com/privacy?hl=en-US" target="_blank"></a>
+        </div>
+    </footer>
+
+    <style>
+        p4, .p4 {
+            margin-left: 40%;
+            color: aliceblue;
+        }
+    </style>
+    @*//........Footer card End........//*@
+
+    <environment include="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery"
+                crossorigin="anonymous"
+                integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=">
+        </script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                crossorigin="anonymous"
+                integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o">
+        </script>
+    </environment>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
+

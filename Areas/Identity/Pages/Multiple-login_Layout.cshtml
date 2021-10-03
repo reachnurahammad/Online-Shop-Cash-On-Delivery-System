@@ -1,0 +1,67 @@
+﻿@{
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+@*<div class="img">
+    <img src="~/img/Dubai.jpg" />
+</div>
+
+<style>
+
+    .img img {
+        width: 1460px;
+        height: 755px;
+        margin-left: -16%;
+        filter: brightness(+70%);
+    }
+</style>*@
+
+
+<div class="row">
+    <div class="col-md-4 offset-md-4">
+        <div class="card login-logout-tab">
+            <div class="card-header">
+                <style>
+                    .card-header {
+                        margin-top: 0%;
+                        background: rgba(0,0,0,0.3);
+                        border: 3px solid #fff;
+                    }
+
+                    .card-header-tabs {
+                        margin-left: 28%;
+                    }
+                </style>
+
+                <ul class="nav nav-tabs card-header-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link" href='/Identity/Account/Login'style="color: darkblue;">Sign In</a>
+                    </li>
+
+
+                    <li class="nav-item">
+                        <a class="nav-link" href='/Identity/Account/Register'style="color: darkblue;">Sign Up</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="card-content">
+                <style>
+                    .card-content {
+                        background: rgba(0,0,0,0.3);
+                        border: 3px solid #fff;
+                    }
+                </style>
+                <div class="row">
+                    <div class="col-md-12">
+                        @RenderBody()
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts{
+    @RenderSection("Scripts", required: false)
+}

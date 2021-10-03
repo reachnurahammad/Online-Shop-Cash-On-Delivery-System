@@ -1,0 +1,71 @@
+﻿@model IEnumerable<Test.Models.Product>
+@{
+    ViewData["Title"] = "AllShops";
+}
+@*//.........//*@
+<div class="box">
+    <div class="row pt-4">
+        <div class="col-md-2">
+            <a href="@Url.Action("Aarong","Home")" class="list-group-item">
+                <img src="~/img/aarong-logo-2.png" alt="laptop" style="height:180px;border: 3px solid #dc4d41;" />
+            </a>
+        </div>
+        <div class="col-md-2">
+            <a href="@Url.Action("BdFood","Home")" class="list-group-item">
+                <img src="~/img/BD-Foods.jpg" alt="laptop" style="height: 180px;border: 3px solid #dc4d41;" />
+            </a>
+        </div>
+
+        <div class="col-md-2">
+            <a href="@Url.Action("Lux","Home")" class="list-group-item">
+                <img src="~/img/lux.png" alt="laptop" style="height: 180px;border: 3px solid #dc4d41;" />
+            </a>
+        </div>
+        <div class="col-md-2">
+            <a href="@Url.Action("Shopno","Home")" class="list-group-item">
+                <img src="~/img/shopno1.png" alt="laptop" style="height: 180px;border: 3px solid #dc4d41;" />
+            </a>
+            <br />
+        </div>
+        <div class="col-md-2">
+            <a href="@Url.Action("Unilever","Home")" class="list-group-item">
+                <img src="~/img/unilever-logo.jpg" alt="laptop" style="height: 180px;border: 3px solid #dc4d41;" />
+            </a>
+        </div>
+        <div class="col-md-2">
+            <a href="@Url.Action("Index","Home")" class="list-group-item">
+                <img src="~/img/AmanFeed.png" alt="laptop" style="height: 180px;border: 3px solid #dc4d41;" />
+            </a>
+        </div>
+    </div>
+</div>
+@*/...Box End.../*@
+<div class="row">
+    @foreach (var item in Model)
+    {
+
+        @*@foreach (var item in ViewBag.ProductData)
+            {*@
+        <div class="col-md-2" style="margin-top:10px; margin-bottom:150px; margin-left: 2%;">
+
+            <div style="height: 180px; width: 150px; background-color: white; margin-top: 30px;">
+                <a asp-action="Details" asp-route-id="@item.Id">
+                    <img src="@item.ImageFile" alt="Product Image" style="height: 220px; width: 270px;" />
+                </a>
+                <div style="background-color: white; width:270px;">
+                    <h6> @item.Details</h6>
+                    <p1>Price: @item.Price</p1>
+                    @*item.Quantity*@
+                    <form asp-action="AddToCart" class="form-inline" method="post">
+                        <input type="hidden" name="pid" value="@item.Id" />
+                        <input type="number" name="qty" value="1" class="form-control" style="width:60px;" />
+                        <button class="btn btn-primary btn-sm ml-1" type="submit">Add To Cart</button>
+
+                        @*<a href="@Url.Action("ShowCart","Shopping")" class="btn btn-danger btn-sm">Buy Now <i class="fas fa-shopping-cart"></i></a>*@
+                    </form>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+

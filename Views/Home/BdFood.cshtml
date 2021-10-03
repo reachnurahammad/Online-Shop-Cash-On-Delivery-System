@@ -1,0 +1,111 @@
+﻿@model IEnumerable<Test.Models.BdFood>
+
+@{
+    ViewData["Title"] = "BdFood";
+}
+<div class="offset-5">
+    <h1>BdFood</h1>
+</div>
+
+
+@*<p>
+        <a asp-action="Create">Create New</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.CompanyName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Details)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Price)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Quantity)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TextBox)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Image)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ImageFile)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+    @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CompanyName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Details)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TextBox)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Image)
+                </td>
+                <td>
+                <td>
+                    <img src="@item.ImageFile" alt="Product Image" style="height: 100px; width: 100px" />
+                </td>
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+    }
+        </tbody>
+    </table>*@
+
+
+@*/.....Bdfood table..../*@
+<div class="row">
+    @foreach (var item in Model)
+    {
+
+        @*@foreach (var item in ViewBag.ProductData)
+            {*@
+        <div class="col-md-2" style="margin-top:10px; margin-bottom:95px; margin-left:2%;">
+            <div style="height: 180px; width: 150px; background-color:#ffffff ; margin-top: 30px; ">
+  
+                    <img src="@item.ImageFile" alt="Product Image" style="height: 180px; width: 270px; border: 1px solid #64696d; border-bottom:none;" />
+        
+                <div style="background-color: white; width:270px; border: 1px solid #64696d; border-top:none;">
+                    <div class="offset-1 ">
+                        <h6> @item.Details</h6>
+                        <p1>Price: @item.Price</p1>
+                        @*item.Quantity*@
+                        <form asp-action="BdFoodAddToCart" class="form-inline" method="post">
+                            <input type="hidden" name="pid" value="@item.Id" />
+                            <input type="number" name="qty" value="1" class="form-control" style="width:60px;" />
+                            <button class="btn btn-primary btn-sm ml-1" type="submit">Add To Cart</button>
+                        </form><br />
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

@@ -1,0 +1,149 @@
+﻿@model IEnumerable<Test.Models.Product>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<br/>
+<div class="offset-5">
+    <h1>welcome to Admin Area!!</h1>
+</div>
+
+@*group-list-button-Admin*@
+<div class="card4" style="width: 20rem; margin-top: -5.4%;">
+    <div class="card-body" style="background-color: black;">
+        <h3 class="card-title text-center" style="color:white;">QUICK.COM</h3>
+        <hr />
+        <form asp-controller="Home" asp-action="Index" method="post">
+            <div class="input-group">
+                <input type="search" class="form-control rounded" name="usertext" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                <button type="submit" class="btn btn-outline-primary">Search</button>
+            </div>
+        </form>
+        <br />
+        <div class="list-group">         
+            <a href="@Url.Action("HomeProduct","Admin")" class="list-group-item text-dark btn btn-light bg-light text-left">Home-product</a>
+            <a asp-action="Create" class="list-group-item text-dark btn btn-light bg-light text-left">Home product<i class="fas fa-plus-square ml-4"></i></a>
+            <a href="@Url.Action("desktop","Admin")" class="list-group-item text-dark btn btn-light bg-light text-left">desktop</a>
+            <a asp-action="DesktopUpload" class="list-group-item text-dark btn btn-light bg-light text-left">DesktopUpload<i class="fas fa-plus-square ml-3"></i></a>
+            <a href="@Url.Action("Laptops","Admin")" class="list-group-item text-dark btn btn-light bg-light text-left">Laptops</a>
+            <a asp-action="LaptopUpload" class="list-group-item text-dark btn btn-light bg-light text-left ">LaptopUpload<i class="fas fa-plus-square ml-4"></i></a>
+            <a href="@Url.Action("Baik","Admin")" class="list-group-item text-dark btn btn-light bg-light text-left">Motor-Baik</a>
+            <a asp-action="BaikUpload" class="list-group-item text-dark btn btn-light bg-light text-left">BaikUpload<i class="fas fa-plus-square ml-5"></i></a>
+            <a href="@Url.Action("manswatch","Home")" class="list-group-item text-dark btn btn-light bg-light text-left ">mens-watch</a>
+            <a href="@Url.Action("smartphone","Home")" class="list-group-item text-dark btn btn-light bg-light text-left">smart-phone</a>
+            <a href="@Url.Action("smarttv","Home")" class="list-group-item text-dark btn btn-light bg-light text-left">smart-tv</a>
+
+
+            <a href="@Url.Action("Aarong","Admin")" class="list-group-item text-dark btn btn-light bg-light text-left">Aarong</a>
+            <a asp-action="AarongUpload" class="list-group-item text-dark btn btn-light bg-light text-left">Aarong<i class="fas fa-plus-square ml-5"></i></a>
+
+
+            <a href="@Url.Action("BdFood","Admin")" class="list-group-item text-dark btn btn-light bg-light text-left">BdFood</a>
+            <a asp-action="BdFoodUpload" class="list-group-item text-dark btn btn-light bg-light text-left">BdFoodUpload<i class="fas fa-plus-square ml-5"></i></a>
+
+
+            <a href="@Url.Action("Lux","Admin")" class="list-group-item text-dark btn btn-light bg-light text-left">Lux</a>
+            <a asp-action="LuxUpload" class="list-group-item text-dark btn btn-light bg-light text-left">LuxUpload<i class="fas fa-plus-square ml-5"></i></a>
+
+            <a href="@Url.Action("Shopno","Admin")" class="list-group-item text-dark btn btn-light bg-light text-left">Shopno</a>
+            <a asp-action="ShopnoUpload" class="list-group-item text-dark btn btn-light bg-light text-left">ShopnoUpload<i class="fas fa-plus-square ml-5"></i></a>
+
+
+            <a href="@Url.Action("Unilever","Admin")" class="list-group-item text-dark btn btn-light bg-light text-left">Unilever</a>
+            <a asp-action="UnileverUpload" class="list-group-item text-dark btn btn-light bg-light text-left">UnileverUpload<i class="fas fa-plus-square ml-5"></i></a>
+
+            <a href="@Url.Action("Primier","Admin")" class="list-group-item text-dark btn btn-light bg-light text-left">Primier</a>
+            <a asp-action="PrimierUpload" class="list-group-item text-dark btn btn-light bg-light text-left">PrimierUpload<i class="fas fa-plus-square ml-5"></i></a>
+
+            <a href="@Url.Action("Efood","Admin")" class="list-group-item text-dark btn btn-light bg-light text-left">Efood</a>
+            <a asp-action="EfoodUpload" class="list-group-item text-dark btn btn-light bg-light text-left">EfoodUpload<i class="fas fa-plus-square ml-5"></i></a>
+
+            <a href="@Url.Action("ContactUs","Admin")" class="list-group-item text-dark btn btn-light bg-light text-left">ContactUs</a>
+        </div>
+    </div>
+</div>
+
+
+<table class="table table-bordered table-sm " style="margin-top: -89.3%;margin-left:21%;color:black;width: 79%;">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CompanyName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Details)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TextBox)
+                </th>*@
+
+
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Quantity)
+                </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Image)
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.ImageFile)
+                </th>*@
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CompanyName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Details)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TextBox)
+                    </td>*@
+
+
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.Quantity)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Image)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ImageFile)
+                    </td>*@
+                <td>
+                    <img src="@item.ImageFile" alt="Product Image" style="height: 50px; width: 60px;" />
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-info"><i class="fas fa-edit"></i></a>
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary"><i class="fas fa-info-circle"></i></a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
+                </td>
+            </tr>
+
+        }
+    </tbody>
+</table>

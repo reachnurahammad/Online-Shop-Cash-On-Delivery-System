@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewData["Title"] = "AssignRole";
+}
+
+<br/>
+<br/>
+<br/>
+<br/>
+<h1 class="alert alert-info text-center">Assign Role</h1>
+<div class="row">
+    <h4 class="text-primary text-center">@ViewBag.msg</h4>
+</div>
+<div class="d-flex justify-content-center ">
+    <div class="col-md-4">
+        <form asp-action="AssignRole" asp-controller="Role" method="post">
+            <label>User List :</label>
+            <select name="userdata" class="form-control">
+                <option>---Select User---</option>
+                @foreach (var u in ViewBag.users)
+                {
+                    <option value="@u.Email">@u.Email</option>
+                }
+            </select><br />
+            <label>Role List :</label>
+            <select name="roledata" class="form-control">
+                <option>---Select User---</option>
+                @foreach (var u in ViewBag.roles)
+                {
+                    <option value="@u.NormalizedName">@u.NormalizedName</option>
+                }
+            </select><br />
+            <button class="btn btn-success" type="submit">Assign Role</button>
+        </form>
+    </div>
+</div>
+
+

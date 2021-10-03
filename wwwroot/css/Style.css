@@ -1,0 +1,70 @@
+﻿body {
+}
+/*List button*/
+.menu-ber {
+    background: black;
+    text-align: center;
+    width: 137%;
+    margin-left: -18.35%;
+    height: 54px;
+    margin-top: 1%;
+}
+
+    .menu-ber ul {
+        display: inline-flex;
+        list-style: none;
+        color: #fff;
+        margin-top: -1.4%;
+        margin-left: -4%;
+    }
+
+        .menu-ber ul li {
+            width: 150px;
+            margin: 22px;
+            padding: 15px;
+        }
+
+            .menu-ber ul li a {
+                text-decoration: none;
+                color: #fff;
+            }
+
+            .active1, .menu-ber ul li:hover {
+                background: #2bad0d;
+                border-radius: 3px;
+            }
+
+                .menu-ber ul li:hover .sub-menu-1 ul li:last-child {
+                    border-bottom: none;
+                }
+
+                .menu-ber ul li:hover .sub-menu-1 ul li a:hover {
+                    color: #b2ff00;
+                }
+
+/*list-group*/
+.list-group {
+    width: 18.5%;
+    margin-left: -18.7%;
+    margin-top: -26%;
+}
+
+/*footer link list-group*/
+.list-group1 {
+    margin-top: -22%;
+}
+
+ul li a {
+    text-decoration: none;
+    color: lightgray;
+}
+
+.list-group2 {
+    margin-left: 40%;
+    margin-top: -13%;
+}
+
+.list-group3 {
+    margin-left: 77%;
+    margin-top: -12.8%;
+}

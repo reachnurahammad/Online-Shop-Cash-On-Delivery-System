@@ -1,0 +1,126 @@
+﻿
+@model Test.Models.OrderAddress
+
+@{
+    ViewData["Title"] = "CheckOut";
+}
+<style>
+    .container .col-md-6 {
+        width: 100%;
+    }
+</style>
+<br />
+<br />
+<div class="text-center" style="color: indigo;">
+    <h1>CheckOut OrderAddress</h1>
+</div>
+
+<hr />
+<div class="row ">
+    <div class="col-md-5 offset-md-4">
+
+        <div class="card-content">
+            <style>
+                .card-content {
+                    background-color: lightgray;
+                    border: 10px solid #fff;
+                }
+            </style>
+            <br />
+            <div class="text-center" style="color: mediumblue;">
+                <h4> Please submit your current address!</h4>
+            </div>
+            <br />
+            <form asp-action="CheckOut"  method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group col-md-11">
+                    <label asp-for="RecipientName" class="control-label"></label>
+                    <input asp-for="RecipientName" class="form-control" />
+                    <span asp-validation-for="RecipientName" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-11">
+                    <label asp-for="PhoneNo" class="control-label"></label>
+                    <input asp-for="PhoneNo" class="form-control" />
+                    <span asp-validation-for="PhoneNo" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-11 ">
+                    <label asp-for="Division" class="control-label"></label>
+                    <input asp-for="Division" class="form-control" />
+                    <span asp-validation-for="Division" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-11">
+                    <label asp-for="City" class="control-label"></label>
+                    <select asp-for="City" class="form-control" asp-items="ViewBag.City">
+                        <option value="">--City!-</option>
+                    </select>
+                    <span asp-validation-for="City" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-11">
+                    <label asp-for="Area" class="control-label"></label>
+                    <select asp-for="Area" class="form-control" asp-items="ViewBag.Area">
+                        <option value="">--Please select your Aria!-</option>
+                    </select>
+                    <span asp-validation-for="Area" class="text-danger"></span>
+                </div>
+              
+                <div class="form-group col-md-11 ">
+                    <input type="submit" value="Confirm Order" class="btn btn-danger" />
+                 
+                    @*<input type="submit" value="Submit" href="@Url.Action("submit","Home")" class="btn btn-primary"/>*@
+             
+                    @*<a href="@Url.Action("submit","Home")" class="btn btn-info">Upload</a>*@
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

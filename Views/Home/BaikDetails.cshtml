@@ -1,0 +1,86 @@
+﻿@model Test.Models.Baik
+@{
+    ViewData["Title"] = "DetailsDesktop";
+}
+
+
+
+<div>
+    <br />
+    <div class="row">
+        <dl class="row-responsive-hover" style="background-color: white; width: 1000px; height: 600px; margin-left: 17%;">
+
+            <dt class="col-sm-2" style="margin-left: 60%; margin-top: 10%;">
+                @Html.DisplayNameFor(model => model.BranD)
+            </dt>
+            <dd class="col-sm-10" style="margin-left: 60%; margin-top: 1%;">
+                @Html.DisplayFor(model => model.BranD)
+            </dd>
+            <dt class="col-sm-2" style="margin-left: 60%; margin-top: 1%;">
+                @Html.DisplayNameFor(model => model.Details)
+            </dt>
+            <dd class="col-sm-10" style="margin-left: 60%; margin-top: 1%;">
+                @Html.DisplayFor(model => model.Details)
+            </dd>
+            <dt class="col-sm-2" style="margin-left: 60%; margin-top: 1%;">
+                @Html.DisplayNameFor(model => model.Price)
+            </dt>
+            <dd class="col-sm-10" style="margin-left: 60%; margin-top: 1%;">
+                @Html.DisplayFor(model => model.Price)
+            </dd>
+
+
+            <dd class="col-sm-10">
+                <img src="@Model.ImageFile" alt="Product Image" style="height: 350px; width: 400px;  margin-top: -20%;" />
+            </dd>
+            <dt class="col-sm-10">
+                <a asp-action="Baik">Back to List</a>
+            </dt>
+            <form asp-action="baikAddToCart" class="form-inline" method="post" style="margin-left: 1%;">
+                <input type="hidden" name="pid" value="@Model.Id" />
+                <input type="number" name="qty" value="1" class="form-control" style="width:60px;" />
+                <button class="btn btn-primary btn-sm ml-1" type="submit">Add</button>
+            </form>
+            <div class="col-sm-10" style="margin-left: 60%; margin-top: -10%;">
+                <a href="@Url.Action("ShowCart","Home")" class="btn btn-danger btn-block col-md-5">Show-Item's <i class="fas fa-shopping-cart"></i></a>
+                @*<button type="button" class="btn btn-primary btn-block col-md-5">Button 1</button>*@
+            </div>
+        </dl>
+    </div>
+</div>
+<div class="card bg-light p-4  details" style="margin-top: 1%; width:1400px; margin-left: 3.5%">
+    <h2>Product Details</h2>
+    <p>@Model.Description</p>
+    <br />
+    <br />
+
+    <p>@Model.TextBox</p>
+
+
+</div>
+
+<div class="row">
+    @foreach (var item in ViewBag.BaikData)
+    {
+        <div class="col-md-2" style="margin-top:10px; margin-bottom:100px; margin-left: 2%;">
+
+            <div style="height: 180px; width: 150px; background-color: white; margin-top: 30px;">
+                <a asp-action="BaikDetails" asp-route-id="@item.Id">
+                    <img src="@item.ImageFile" alt="Product Image" style="height: 220px; width: 280px;" />
+                </a>
+                <div style="background-color: white; width:280px;">
+                    <div class="offset-1">
+                        <h6> @item.Details</h6>
+                        <p1>Price: @item.Price</p1>
+                        @*item.Quantity*@
+                        <form asp-action="baikAddToCart" class="form-inline" method="post">
+                            <input type="hidden" name="pid" value="@item.Id" />
+                            <input type="number" name="qty" value="1" class="form-control" style="width:60px;" />
+                            <button class="btn btn-primary btn-sm ml-1" type="submit">Add To Cart</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

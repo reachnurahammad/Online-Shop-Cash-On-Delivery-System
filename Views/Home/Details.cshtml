@@ -1,0 +1,182 @@
+﻿@model Test.Models.Product
+
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<style>
+    .details {
+        margin-top: 30px;
+    }
+</style>
+<br/>
+<div>  
+    <div class="row">
+        <dl class="row-responsive-hover" style="background-color: white; width: 1400px; height: 600px; margin-left: 4.5%;">
+
+            <dt class="col-sm-2" style="margin-left: 60%; margin-top: 10%;">
+                @Html.DisplayNameFor(model => model.CompanyName)
+            </dt>
+            <dd class="col-sm-10" style="margin-left: 60%; margin-top: 1%;">
+                @Html.DisplayFor(model => model.CompanyName)
+            </dd>
+            <dt class="col-sm-2" style="margin-left: 60%; margin-top: 1%;">
+                @Html.DisplayNameFor(model => model.Details)
+            </dt>
+            <dd class="col-sm-10" style="margin-left: 60%; margin-top: 1%;">
+                @Html.DisplayFor(model => model.Details)
+            </dd>
+            <dt class="col-sm-2" style="margin-left: 60%; margin-top: 1%;">
+                @Html.DisplayNameFor(model => model.Price)
+            </dt>
+
+            <dd class="col-sm-10" style="margin-left: 60%; margin-top: 1%;">
+                @Html.DisplayFor(model => model.Price)
+            </dd>
+
+
+            @*<dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.ImageFile)
+                </dt>*@
+            @*<dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.ImageFile)
+                </dd>*@
+            @*<dd>
+                    @{
+                        var b64 = Convert.ToBase64String(Model.Image);
+                        var imgsrc = String.Format("data:image/jpg;base64,{0}", b64);
+                    }
+                    <img src="@imgsrc" alt="Product Image" style="width:400px;height: 300px;" />
+                </dd>*@
+
+
+
+            <dd class="col-sm-10">
+                <img src="@Model.ImageFile" alt="Product Image" style="height: 350px; width: 400px;  margin-top: -20%; margin-left: 7%;" />
+            </dd>
+            <dt class="col-sm-10" style="margin-left:7%;">
+                <a asp-action="Index">Back to List</a>
+            </dt>
+            <form asp-action="AddToCart" class="form-inline" method="post" style="margin-left: 7%;">
+                <input type="hidden" name="pid" value="@Model.Id" />
+                <input type="number" name="qty" value="1" class="form-control" style="width:60px;" />
+                <button class="btn btn-primary btn-sm ml-1" type="submit">Add to cut</button>
+            </form>
+            <div class="col-sm-10" style="margin-left: 60%; margin-top: -10%;">
+
+                <a href="@Url.Action("ShowCart","Home")" class="btn btn-danger btn-block col-md-5">Show-Item's <i class="fas fa-shopping-cart"></i></a>
+
+                @*<button type="button" class="btn btn-primary btn-block col-md-5">Button 1</button>*@
+            </div>
+        </dl>
+        @*<form asp-action="ProductdetailsAddToCart" class="form-inline" method="post" style="margin-left: 7%;">
+            <input type="hidden" name="pid" value="@Model.Id" />
+            <input type="number" name="qty" value="1" class="form-control" style="width:60px;" />
+            <button class="btn btn-primary btn-sm ml-1" type="submit">Add to cut</button>*@
+        @*</form>*@
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="card bg-light p-5  details" style="margin-top: 1%; width:1400px; margin-left: 3.5%">
+    <h2>Product Details</h2>
+    <p>@Model.Description</p>
+    <br />
+    <br />
+    <p>@Model.TextBox</p>
+</div>
+
+
+<div class="row">
+
+    @foreach (var item in ViewBag.ProductData)
+    {
+        
+            <div class="col-md-2" style="margin-top:10px; margin-bottom:135px; margin-left:2%; ">
+
+                <div style="height: 180px; width: 150px; background-color: #ffffff; margin-top: 30px;">
+                    <a asp-action="Details" asp-route-id="@item.Id">
+                        <img src="@item.ImageFile" alt="Product Image" style="height: 220px; width: 270px;   border: 1px solid #64696d; border-bottom:none;" />
+                    </a>
+                    <div style="background-color: #ffffff; width:270px;border: 1px solid #64696d; border-top:none;" >
+                        <div class="offset-1">
+                            <h6> @item.Details</h6>
+                            <p1>Price: @item.Price</p1>
+                            @*item.Quantity*@
+                            <form asp-action="AddToCart" class="form-inline" method="post">
+                                <input type="hidden" name="pid" value="@item.Id" />
+                                <input type="number" name="qty" value="1" class="form-control" style="width:60px;" />
+                                <button class="btn btn-primary btn-sm ml-1" type="submit">Add To Cart</button>
+
+                                @*<a href="@Url.Action("ShowCart","Shopping")" class="btn btn-danger btn-sm">Buy Now <i class="fas fa-shopping-cart"></i></a>*@
+                            </form><br/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           
+        }
+    </div>
+
+
+
+        <div class="d-flex justify-content-center">
+            <ul class="pagination pagination-sm">
+
+                @for (int i = 1; i <= ViewBag.Total; i++)
+                {
+                    if (i == ViewBag.CurrentPage)
+                    {
+                        <li class="page-item active">
+                            <span class="page-link">@i</span>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="page-item">
+                            @Html.ActionLink(i.ToString(), "Details", "Home", new { page = i }, new { @class = "page-link" })
+                        </li>
+                    }
+                }
+            </ul>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

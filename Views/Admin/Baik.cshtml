@@ -1,0 +1,91 @@
+﻿@model IEnumerable<Test.Models.Baik>
+
+@{
+    ViewData["Title"] = "Baik";
+}
+
+<br />
+@*group-list-button-Admin*@
+<div class="card4" style="width: 20rem; margin-top: -2%;">
+    <div class="card-body" style="background-color: black;">
+        <h3 class="card-title text-center" style="color:white;">QUICK.COM</h3>
+        <hr />
+        <form asp-controller="Home" asp-action="Index" method="post">
+            <div class="input-group">
+                <input type="search" class="form-control rounded" name="usertext" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                <button type="submit" class="btn btn-outline-primary">Search</button>
+            </div>
+        </form>
+        <br />
+        <div class="list-group">
+
+            <a href="@Url.Action("CustomerOrders","Admin")" class="list-group-item">Customer Orders</a>
+            <a href="@Url.Action("HomeProduct","Admin")" class="list-group-item">Home-product</a>
+            <a asp-action="Create" class="list-group-item">Home product<i class="fas fa-plus-square ml-4"></i></a>
+            <a href="@Url.Action("desktop","Admin")" class="list-group-item">desktop</a>
+            <a asp-action="DesktopUpload" class="list-group-item">DesktopUpload<i class="fas fa-plus-square ml-3"></i></a>
+            <a href="@Url.Action("Laptops","Admin")" class="list-group-item">Laptops</a>
+            <a asp-action="LaptopUpload" class="list-group-item">LaptopUpload<i class="fas fa-plus-square ml-4"></i></a>
+            <a href="@Url.Action("Baik","Admin")" class="list-group-item">Motor-Baik</a>
+            <a asp-action="BaikUpload" class="list-group-item">BaikUpload<i class="fas fa-plus-square ml-5"></i></a>
+            <a href="@Url.Action("manswatch","Home")" class="list-group-item">mens-watch</a>
+            <a href="@Url.Action("smartphone","Home")" class="list-group-item">smart-phone</a>
+            <a href="@Url.Action("smarttv","Home")" class="list-group-item">smart-tv</a>
+            <a href="@Url.Action("Refrigerator","Home")" class="list-group-item">Refrigerator</a>
+        </div>
+    </div>
+</div>
+@*<table class="table table-bordered table-sm">
+    <thead class="thead-dark">*@
+
+<table class="table table-bordered table-sm " style="margin-top: -52.7%;margin-left:21%;width: 79%;">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.BranD)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Details)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Image)
+            </th>
+
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BranD)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Details)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+                <td>
+                    <img src="@item.ImageFile" alt="Product Image" style="height: 50px; width: 60px;" />
+                </td>
+
+                <td>
+                    <a asp-action="EditDesktop" asp-route-id="@item.Id" class="btn btn-info"><i class="fas fa-edit"></i></a>
+                    <a asp-action="DetailsDesktop" asp-route-id="@item.Id" class="btn btn-primary"><i class="fas fa-info-circle"></i></a>
+                    <a asp-action="DeleteDesktop" asp-route-id="@item.Id" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

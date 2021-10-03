@@ -1,0 +1,68 @@
+﻿@model Test.Models.Dasktop
+
+@{
+    ViewData["Title"] = "DetailsDesktop";
+}
+
+
+<div class="text-center" style="color: indigo;">
+    <br />
+    <h4>Details-Desktop</h4>
+    <hr />
+</div>
+<div>
+
+    <dl class="row offset-4">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.BrandName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.BrandName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Details)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Details)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Quantity)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Quantity)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TextBox)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TextBox)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Image)
+        </dd>
+        <dd class="">
+            <img src="@Model.ImageFile" alt="Product Image" style="height: 350px; width: 400px;" />
+        </dd>
+    </dl>
+
+    <div class="offset-4">
+        <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+        <a asp-action="Index">Back to List</a>
+    </div>
+</div>
+
